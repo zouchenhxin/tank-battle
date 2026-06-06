@@ -679,6 +679,14 @@ function update(dt) {
 function cellX(col) { return GRID_X + col * CELL; }
 function cellY(row) { return GRID_Y + row * CELL; }
 
+function getCellAt(x, y) {
+    const col = Math.floor((x - GRID_X) / CELL);
+    const row = Math.floor((y - GRID_Y) / CELL);
+    if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return null;
+    if (walls[row][col] === 0) return null;
+    return { row, col, value: walls[row][col] };
+}
+
 function drawMap() {
     for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {
