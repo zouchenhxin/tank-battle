@@ -525,7 +525,7 @@ function up(dt){
   uSB(dt);for(const b of bullets){if(b._sa===undefined&&b.a)b.up(dt)}
 
   for(const b of bullets){if(!b.a)continue;
-    if(typeof b.ow==='number'){if(gm==='versus'){const tp=b.ow===1?2:1;const tgt=players.find(p=>p.pid===tp&&p.a);if(tgt&&Math.abs(b.x-tgt.x)<TS/2&&Math.abs(b.y-tgt.y)<TS/2){b.a=false;tgt.hp--;sBl(tgt.x,tgt.y);sSm(tgt.x,tgt.y,5);if(tgt.hp<=0){sEx(tgt.x,tgt.y,18);sfxEx();if(b.ow===1)sP1++;else sP2++;kP(tgt)}else sfxH();continue}}
+    if(typeof b.ow==='number'){if(gm==='versus'){const tp=b.ow===1?2:1;const tgt=players.find(p=>p.pid===tp&&p.a);if(tgt&&Math.abs(b.x-tgt.x)<TS/2&&Math.abs(b.y-tgt.y)<TS/2){b.a=false;tgt.hp--;sBl(tgt.x,tgt.y);sSm(tgt.x,tgt.y,5);if(tgt.hp<=0){sEx(tgt.x,tgt.y,18);sfxEx();if(b.ow===1)sP1++;else sP2++;kP(tgt)}else sfxH();continue}
       else{for(const e of enemies){if(!e.a)continue;if(Math.abs(b.x-e.x)<TS/2&&Math.abs(b.y-e.y)<TS/2){b.a=false;e.hp--;sBl(e.x,e.y);sSm(e.x,e.y,5);if(e.hp<=0){e.a=false;sEx(e.x,e.y,18);sfxEx();scr+=100}else sfxH();break}}
         if(bo&&bo.a&&Math.abs(b.x-bo.x)<BSZ/2&&Math.abs(b.y-bo.y)<BSZ/2){b.a=false;bo.hp--;sBl(bo.x,bo.y);sSm(bo.x,bo.y,10);sfxH();if(bo.hp<=0){bo.a=false;sEx(bo.x,bo.y,50);sfxEx();scr+=1000;sP1+=5;sP2+=5;setTimeout(()=>{if(gs==='playing'){if(gm==='single'&&SINFO[stg-1]?.bo){stCl()}else{gs='win';sfxWin()}}},700)}}}}
     else if(b.ow==='enemy'||b.ow==='boss'){for(const p of players){if(!p.a||p.inv>0)continue;if(Math.abs(b.x-p.x)<TS/2&&Math.abs(b.y-p.y)<TS/2){b.a=false;p.hp--;sBl(p.x,p.y);sSm(p.x,p.y,5);if(p.hp<=0){sEx(p.x,p.y,20);sfxEx();kP(p)}else sfxH()}}}
